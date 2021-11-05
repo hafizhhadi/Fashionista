@@ -10,8 +10,13 @@ class Rating extends Model
     use HasFactory;
 
     protected $fillable = [
-        
+
         'number',
         
     ];
+
+    public function feedback()
+    {
+        return $this->hasOne(Feedback::class);
+    }
 }
