@@ -13,4 +13,9 @@ class Payment extends Model
         'date',
         'receipt',
     ];
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class,'product_id','payment_id');
+    }
 }
