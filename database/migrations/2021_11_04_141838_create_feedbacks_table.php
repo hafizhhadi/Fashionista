@@ -15,11 +15,13 @@ class CreateFeedbacksTable extends Migration
     {
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('rate_id')->nullable();
             $table->string('description');
             $table->timestamps();
 
             $table->foreign('rate_id')->references('id')->on('ratings')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
