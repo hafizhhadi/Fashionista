@@ -26,7 +26,15 @@
                         <tr>
                             <td>{{ $keys+1 }}</td>
                             <td>{{ $product->name }}</td>
-                            <td><img src="{{ asset('/storage/'.$product->image) }}" width="50px;" height="50px;" alt=""></td>
+                            @if($product->image)
+                                <td>
+                                    <a target="_blank" href="{{ asset('storage/'.$product->image) }}" class="">
+                                    <img src="{{ asset('storage/'.$product->image) }}" width="50px;" height="50px;" alt="">
+                                    </a>
+                                </td>
+                            @else
+                                <td></td>
+                            @endif
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->description }}</td>
                             <td>
