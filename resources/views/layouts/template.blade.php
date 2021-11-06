@@ -43,21 +43,24 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('admin:home') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-
-            
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('product:index') }}">
+                    <i class="fab fa-product-hunt"></i>
+                    <span>Product</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>Feedback</span></a>
+            </li>
 
         </ul>
         <!-- End of Sidebar -->
