@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('category_id')->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->float('price',8,2);
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->longText('description');
             $table->string('name');
             $table->timestamps();
