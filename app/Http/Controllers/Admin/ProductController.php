@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
+use File;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Storage;
 
 class ProductController extends Controller
 {
@@ -14,7 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all(); //amik data
+        return view('admin.product.index', compact('products'));
     }
 
     /**
@@ -24,7 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product.create');
     }
 
     /**
@@ -35,7 +39,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product();
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        
+        $product->save();
+
+        if($request->hasFile('image')){
+            // rename file - 5-2021-09-03.jpg/xls
+            $filename = $product->id.'-'.date("Y-m-d").'.'.$request->image->getClientOriginalExtension();
+
+            // store attachment on storage
+            Storage::disk('public')->put($filename, File::get($request->image));
+
+            // update row
+            $product->image = $filename;
+            $product->save();
+        }
+
+        return redirect()->route('product:index')->with([
+            'alert-type' => 'alert-success',
+            'alert-message' => 'Component Added',
+            ]);
     }
 
     /**
