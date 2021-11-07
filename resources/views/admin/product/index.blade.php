@@ -6,6 +6,7 @@
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Product List</h6>
             <br>
+            
             <a href="{{ route('product:create') }}" type="button" class="btn btn-primary">+</a>
         </div>
         <div class="card-body">
@@ -26,10 +27,10 @@
                         <tr>
                             <td>{{ $keys+1 }}</td>
                             <td>{{ $product->name }}</td>
-                            @if($product->image)
+                            @if($product->image) 
                                 <td>
                                     <a target="_blank" href="{{ asset('storage/'.$product->image) }}" class="">
-                                    <img src="{{ asset('storage/'.$product->image) }}" width="50px;" height="50px;" alt="">
+                                    <img src="{{ asset('storage/'.$product->image) }}" width="50px;" height="50px;" alt=""> 
                                     </a>
                                 </td>
                             @else
@@ -38,10 +39,10 @@
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->description }}</td>
                             <td>
-                                <a href="#" class="btn btn-warning btn-circle">
+                                <a href="{{ route('product:edit', $product) }}" class="btn btn-warning btn-circle">
                                     <i class="fas fa-exclamation-triangle"></i>
                                 </a>
-                                <a href="#" class="btn btn-danger btn-circle">
+                                <a href="{{ route('product:destroy', $product ) }}" class="btn btn-danger btn-circle">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </td>

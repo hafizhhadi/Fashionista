@@ -81,9 +81,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        return view('admin.product.edit', compact('product'));
     }
 
     /**
@@ -93,9 +93,29 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->save();
+
+        if($request->hasFile('image')){
+            // rename file - 5-2021-09-03.jpg/xls
+            $filename = $product->id.'-'.date("Y-m-d").'.'.$request->image->getClientOriginalExtension();
+
+            // store attachment on storage
+            Storage::disk('public')->put($filename, File::get($request->image));
+
+            // update row
+            $product->image = $filename;
+            $product->save();
+        }
+
+        return redirect()->route('product:index')->with([
+            'alert-type' => 'alert-success',
+            'alert-message' => 'Component Added',
+            ]);
     }
 
     /**
@@ -104,8 +124,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('product:index');
     }
 }
