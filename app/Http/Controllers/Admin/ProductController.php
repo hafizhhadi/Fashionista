@@ -60,7 +60,7 @@ class ProductController extends Controller
 
         return redirect()->route('product:index')->with([
             'alert-type' => 'alert-success',
-            'alert-message' => 'Component Added',
+            'alert-message' => 'Product Added',
             ]);
     }
 
@@ -113,8 +113,8 @@ class ProductController extends Controller
         }
 
         return redirect()->route('product:index')->with([
-            'alert-type' => 'alert-success',
-            'alert-message' => 'Component Added',
+            'alert-type' => 'alert-warning',
+            'alert-message' => 'Product edited',
             ]);
     }
 
@@ -128,6 +128,9 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('product:index');
+        return redirect()->route('product:index')->with([
+            'alert-type' => 'alert-danger',
+            'alert-message' => 'Product deleted'
+        ]);
     }
 }

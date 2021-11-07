@@ -6,7 +6,11 @@
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Product List</h6>
             <br>
-            
+            @if(session()->has('alert-message'))
+            <div class="alert {{ session()->get('alert-type') }}">
+                {{ session()->get('alert-message') }}
+            </div>
+            @endif
             <a href="{{ route('product:create') }}" type="button" class="btn btn-primary">+</a>
         </div>
         <div class="card-body">
@@ -42,7 +46,7 @@
                                 <a href="{{ route('product:edit', $product) }}" class="btn btn-warning btn-circle">
                                     <i class="fas fa-exclamation-triangle"></i>
                                 </a>
-                                <a href="{{ route('product:destroy', $product ) }}" class="btn btn-danger btn-circle">
+                                <a onclick="return confirm('Are you sure to delete this component?')" href="{{ route('product:destroy', $product ) }}" class="btn btn-danger btn-circle">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </td>
