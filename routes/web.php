@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\ProductController;
 
 /*
@@ -25,6 +26,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //admin
 Route::get('/admin/home', [HomeController::class, 'admin'])->name('admin:home')->middleware('is.admin');
+
+//user
+Route::get('/user/profile', [UserController::class, 'show'])->name('user:profile');
+Route::get('/user/profile/edit', [UserController::class, 'edit'])->name('user:edit');
 
 //product
 Route::get('/product/index', [ProductController::class, 'index'])->name('product:index');
