@@ -14,7 +14,7 @@
                             <input type="text" name="name" class="form-control" id="name" placeholder="{{ $product->name }}">
                         </div>
                         <div class ="mb-3">
-                            <label for="price" class="form-label">Price</label>
+                            <label for="price" class="form-label">Price RM</label>
                             <input type="text" name="price" class="form-control" id="price" placeholder=" {{ $product->price }} ">
                         </div>
                         <div class ="mb-3">
