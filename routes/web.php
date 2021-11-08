@@ -28,8 +28,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/admin/home', [HomeController::class, 'admin'])->name('admin:home')->middleware('is.admin');
 
 //user
-Route::get('/user/profile', [UserController::class, 'show'])->name('user:profile');
-Route::get('/user/profile/edit', [UserController::class, 'edit'])->name('user:edit');
+Route::get('/user/profile/{user}', [UserController::class, 'show'])->name('user:show');
+Route::get('/user/profile/edit/{user}', [UserController::class, 'edit'])->name('user:edit');
+Route::post('/user/profile/update/{user}', [UserController::class, 'update'])->name('user:update');
 
 //product
 Route::get('/product/index', [ProductController::class, 'index'])->name('product:index');
