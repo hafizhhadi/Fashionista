@@ -21,6 +21,7 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Image</th>
+                            <th>Category</th>
                             <th>Price (RM)</th>
                             <th>Description</th>
                             <th>Actions</th>
@@ -40,6 +41,7 @@
                             @else
                                 <td></td>
                             @endif
+                            <td>{{ $product->category->name ??null }}</td>
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->description }}</td>
                             <td>
