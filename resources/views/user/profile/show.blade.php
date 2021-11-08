@@ -5,37 +5,34 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Profile') }}</div>
-                <div class="card-body">
+                <div class="card-body"> 
                     <form method="POST" action="#" enctype="multipart/form-data">
                         @csrf
-                        <div class ="mb-3">
-                            <label for="image" class="form-label">Image</label>
-                            <div>
-                                <input type="file" name="image" class="" id="image" placeholder="" disabled>
+                        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">       
+                                <img src="{{ asset('storage/'.$user->detail->image) }}"class="d-block w-100"  alt=""> 
+                              </div>       
                             </div>
-                        </div>
+                          </div>
                         <div class ="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" name="name" class="form-control" id="name" placeholder="" disabled>
-                        </div>
-                        <div class ="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="text" name="password" class="form-control" id="password" placeholder="" disabled>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="{{ $user->name }}" readonly>
                         </div>
                         <div class ="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="text" name="email" class="form-control" id="email" placeholder="" disabled>
+                            <input type="text" name="email" class="form-control" id="email" placeholder="{{ $user->email }}" readonly>
                         </div>      
                         <div class ="mb-3">
                             <label for="address" class="form-label">Address</label>
-                            <input type="textArea" name="email" class="form-control" id="address" placeholder="" disabled>
+                            <input type="textArea" name="email" class="form-control" id="address" placeholder="{{ $user->detail->address }}" readonly>
                         </div>
                         <div class ="mb-3">
                             <label for="phone_number" class="form-label">Phone Number</label>
-                            <input type="text" name="phone_number" class="form-control" id="phone_number" placeholder="" disabled>
+                            <input type="text" name="phone_number" class="form-control" id="phone_number" placeholder="{{ $user->detail->phone_number }}" readonly>
                         </div>
                         <div class ="mb-3">
-                            <a href="{{ route('user:edit') }}" type="button" class="btn btn-info">Edit profile</a>
+                            <a href="{{ route('user:edit', $user) }}" type="button" class="btn btn-info">Edit profile</a>
                         </div>
                     </form>
                 </div>
