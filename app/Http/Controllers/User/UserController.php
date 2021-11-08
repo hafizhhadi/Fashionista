@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\User;
 
+use File;
+use Storage;
 use App\Models\User;
-use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -72,12 +73,12 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->name = $request->name;
-        $user->password = $request->password;
-        $user->email = $request->email;
-        $user->address = $request->address;
-        $user->phone_number = $request->phone_number;
-        $user->save();
+        $user = auth()->user(); 
+        $user->update([
+            'name'=>$request->name,
+            'password'=>Hash::make($request->password),
+            'email'=>$request->email,
+        ]);
 
         if($request->hasFile('image')){
             // rename file - 5-2021-09-03.jpg/xls
@@ -87,10 +88,25 @@ class UserController extends Controller
             Storage::disk('public')->put($filename, File::get($request->image));
 
             // update row
-            $user->image = $filename;
+           
             $user->save();
         }
-        return redirect()->route('user:detail')->with([
+        
+        $user->detail()->create([
+            'user_id'=>auth()->user(),
+            'address'=>$request->address,
+            'phone_number'=>$request->phone_number,
+            'image'=>$filename,
+            
+        ]);
+        // $user->detail()->address = $request->address;
+        // $user->detail()->phone_number = $request->phone_number;
+        
+        $user->save();
+
+        
+        
+        return redirect()->route('user:show', $user )->with([
 
         'alert-type' => 'alert-warning',
         'alert-message' => 'User details edited',
