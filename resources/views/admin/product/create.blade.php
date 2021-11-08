@@ -9,6 +9,12 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('product:store') }}" enctype="multipart/form-data">
                         @csrf
+                        <select class="form-select" name="category" aria-label="Default select example">
+                            <option selected>Category</option>
+                            @foreach ($categories as $category )
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>    
+                            @endforeach
+                          </select>
                         <div class ="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" name="name" class="form-control" id="name" placeholder="">
