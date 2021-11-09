@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -42,6 +43,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new Product();
+        $product->user_id = Auth::id();
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
