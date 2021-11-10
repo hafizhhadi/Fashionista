@@ -11,7 +11,11 @@
                 {{ session()->get('alert-message') }}
             </div>
             @endif
+            @if(auth()->user()->is_admin == 1)
             <a href="{{ route('product:create') }}" type="button" class="btn btn-primary">+</a>
+            @else
+
+            @endif
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -24,7 +28,10 @@
                             <th>Category</th>
                             <th>Price (RM)</th>
                             <th>Description</th>
+                            @if(auth()->user()->is_admin == 1)
                             <th>Actions</th>
+                            @else
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +51,7 @@
                             <td>{{ $product->category->name ??null }}</td>
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->description }}</td>
+                            @if(auth()->user()->is_admin == 1)
                             <td>
                                 <a href="{{ route('product:edit', $product) }}" class="btn btn-warning btn-circle">
                                     <i class="fas fa-exclamation-triangle"></i>
@@ -52,6 +60,8 @@
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </td>
+                            @else
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>
