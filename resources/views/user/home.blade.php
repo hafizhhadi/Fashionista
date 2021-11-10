@@ -1,40 +1,193 @@
 @extends('layouts.template')
-
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <section class="py-5">
-                <div class="container px-4 px-lg-5 mt-5">
-                    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                        @foreach ($products as $product )
-                        <div class="col mb-5">
-                            <div class="card h-100">
-                                <!-- Product image-->
-                                @if($product->image)
-                                    <img class="card-img-top" src="{{ asset('storage/'.$product->image) }}" alt="..." />
-                                @else
-                                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                @endif
-                                <!-- Product details-->
-                                <div class="card-body p-4">
-                                    <div class="text-center">
-                                        <!-- Product name-->
-                                        <h5 class="fw-bolder">{{ $product->name }}</h5>
-                                        <!-- Product price-->
-                                        {{ $product->price }}
-                                    </div>
-                                </div>
-                                <!-- Product actions-->
-                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                                </div>
+
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Layout</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Blank</a></li>
+            </ol>
+        </div>
+        
+        <div class="row">
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="new-arrival-product">
+                            <div class="new-arrivals-img-contnent">
+                                <img class="img-fluid" src="{!! asset('template/images/product/1.jpg') !!}" alt="">
+                            </div>
+                            <div class="new-arrival-content text-center mt-3">
+                                <h4><a href="ecom-product-detail.html">Bonorum et Malorum</a></h4>
+                                <ul class="star-rating">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star-half-empty"></i></li>
+                                    <li><i class="fa fa-star-half-empty"></i></li>
+                                </ul>
+                                <span class="price">$761.00</span>
                             </div>
                         </div>
-                        @endforeach
                     </div>
                 </div>
-            </section>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="new-arrival-product">
+                            <div class="new-arrivals-img-contnent">
+                                <img class="img-fluid" src="{!! asset('template/images/product/1.jpg') !!}" alt="">
+                            </div>
+                            <div class="new-arrival-content text-center mt-3">
+                                <h4><a href="ecom-product-detail.html">Striped Dress</a></h4>
+                                <ul class="star-rating">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                                <span class="price">$159.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="new-arrival-product">
+                            <div class="new-arrivals-img-contnent">
+                                <img class="img-fluid" src="{!! asset('template/images/product/1.jpg') !!}" alt="">
+                            </div>
+                            <div class="new-arrival-content text-center mt-3">
+                                <h4><a href="ecom-product-detail.html">BBow polka-dot</a></h4>
+                                <ul class="star-rating">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                                <span class="price">$357.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="new-arrival-product">
+                            <div class="new-arrivals-img-contnent">
+                                <img class="img-fluid" src="{!! asset('template/images/product/1.jpg') !!}" alt="">
+                            </div>
+                            <div class="new-arrival-content text-center mt-3">
+                                <h4><a href="ecom-product-detail.html">Z Product 360</a></h4>
+                                <ul class="star-rating">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star-half-empty"></i></li>
+                                    <li><i class="fa fa-star-half-empty"></i></li>
+                                </ul>
+                                <span class="price">$654.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="new-arrival-product">
+                            <div class="new-arrivals-img-contnent">
+                                <img class="img-fluid" src="{!! asset('template/images/product/1.jpg') !!}" alt="">
+                            </div>
+                            <div class="new-arrival-content text-center mt-3">
+                                <h4><a href="ecom-product-detail.html">Chair Grey</a></h4>
+                                <ul class="star-rating">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                                <span class="price">$369.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="new-arrival-product">
+                            <div class="new-arrivals-img-contnent">
+                                <img class="img-fluid" src="{!! asset('template/images/product/1.jpg') !!}" alt="">
+                            </div>
+                            <div class="new-arrival-content text-center mt-3">
+                                <h4><a href="ecom-product-detail.html">fox sake withe</a></h4>
+                                <ul class="star-rating">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                                <span class="price">$245.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="new-arrival-product">
+                            <div class="new-arrivals-img-contnent">
+                                <img class="img-fluid" src="{!! asset('template/images/product/1.jpg') !!}" alt="">
+                            </div>
+                            <div class="new-arrival-content text-center mt-3">
+                                <h4><a href="ecom-product-detail.html">Back Bag</a></h4>
+                                <ul class="star-rating">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                                <span class="price">$364.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="new-arrival-product">
+                            <div class="new-arrivals-img-contnent">
+                                <img class="img-fluid" src="{!! asset('template/images/product/1.jpg') !!}" alt="">
+                            </div>
+                            <div class="new-arrival-content text-center mt-3">
+                                <h4><a href="ecom-product-detail.html">FLARE DRESS</a></h4>
+                                <ul class="star-rating">
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star-half-empty"></i></li>
+                                    <li><i class="fa fa-star-half-empty"></i></li>
+                                </ul>
+                                <span class="price">$548.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
