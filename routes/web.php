@@ -16,13 +16,11 @@ use App\Http\Controllers\Admin\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 //admin
 Route::get('/admin/home', [HomeController::class, 'admin'])->name('admin:home')->middleware('is.admin');
