@@ -21,12 +21,16 @@ use App\Http\Controllers\Admin\ProductController;
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', function() {
+    return view('welcome');
+});
 
 //admin
+Route::get('/user/home', [HomeController::class, 'index'])->name('user:home');
 Route::get('/admin/home', [HomeController::class, 'admin'])->name('admin:home')->middleware('is.admin');
 
-//user
+
+//user profile
 Route::get('/user/home/{user}', [UserController::class, 'index'])->name('user:index');
 Route::get('/user/profile/{user}', [UserController::class, 'show'])->name('user:show');
 Route::get('/user/profile/edit/{user}', [UserController::class, 'edit'])->name('user:edit');
