@@ -31,26 +31,40 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-            </a>
+            @if(auth()->user()->is_admin == 1 ) 
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-laugh-wink"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                </a>
+            @else
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-laugh-wink"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">User <sup>2</sup></div>
+                </a>
+            @endif
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('admin:home') }}">
+                <a class="nav-link" href="@if((auth()->user()->is_admin == 1 ) ){{ route('admin:home') }}@else{{ route('home') }}@endif">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
             
-
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('user:show', auth()->user())}}">
+                    <i class="fas fa-users"></i>
+                    <span>My Profile</span></a>
+            </li>
+            
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('product:index') }}">
                     <i class="fab fa-product-hunt"></i>
@@ -61,7 +75,6 @@
                     <i class="fas fa-comment-dots"></i>
                     <span>Feedback</span></a>
             </li>
-
         </ul>
         <!-- End of Sidebar -->
 
@@ -159,13 +172,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer>
+           
             <!-- End of Footer -->
 
         </div>
