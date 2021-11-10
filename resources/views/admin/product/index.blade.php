@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('content')
-<div class="col-md-12">
+<div class="col-md-10">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Product List</h6>
@@ -28,10 +28,7 @@
                             <th>Category</th>
                             <th>Price (RM)</th>
                             <th>Description</th>
-                            @if(auth()->user()->is_admin == 1)
-                            <th>Actions</th>
-                            @else
-                            @endif
+                            <th>Actions</th>                
                         </tr>
                     </thead>
                     <tbody>
@@ -61,6 +58,14 @@
                                 </a>
                             </td>
                             @else
+                            <td>
+                                <a href="#" class="btn btn-info btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </span>
+                                    <span class="text">Add to cart</span>
+                                </a>
+                            </td>
                             @endif
                         </tr>
                         @endforeach

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 
 /*
@@ -39,5 +40,7 @@ Route::get('/product/edit/{product}', [ProductController::class, 'edit'])->name(
 Route::post('/product/update/{product}', [ProductController::class, 'update'])->name('product:update');
 Route::get('/product/delete/{product}', [ProductController::class, 'destroy'])->name('product:destroy');
 
+//order
+Route::get('/order', [OrderController::class, 'index'])->name('order:index');
 
 

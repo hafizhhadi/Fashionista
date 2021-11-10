@@ -10018,4 +10018,8 @@ h3 {
     color: inherit;
     border-color: #dee2e6;
   }
+
+  .div-color {
+    background-color:blue;
+  }
 }
