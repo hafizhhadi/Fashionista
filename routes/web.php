@@ -26,7 +26,7 @@ Route::get('/', function() {
 });
 
 //home
-Route::get('/user/home', [HomeController::class, 'index'])->name('user:home');
+Route::get('/home', [HomeController::class, 'index'])->name('user:home');
 Route::get('/admin/home', [HomeController::class, 'admin'])->name('admin:home')->middleware('is.admin');
 
 
