@@ -64,8 +64,9 @@ class ProductController extends Controller
         }
 
         return redirect()->route('product:index')->with([
-            'alert-type' => 'alert-success',
+            'alert-type' => 'alert-success left-icon-big alert-dismissible fade show',
             'alert-message' => 'Product Added',
+            'alert-message-2' => 'Item has been added in table',
             ]);
     }
 
@@ -118,8 +119,9 @@ class ProductController extends Controller
         }
 
         return redirect()->route('product:index')->with([
-            'alert-type' => 'alert-warning',
+            'alert-type' => 'alert-warning left-icon-big alert-dismissible fade show',
             'alert-message' => 'Product edited',
+            'alert-message-2' => 'Check table for the newly edited product',
             ]);
     }
 
@@ -134,8 +136,9 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('product:index')->with([
-            'alert-type' => 'alert-danger',
-            'alert-message' => 'Product deleted'
+            'alert-type' => 'alert-danger left-icon-big alert-dismissible fade show',
+            'alert-message' => 'Product deleted',
+            'alert-message-2' => 'Item has been removed'
         ]);
     }
 }
