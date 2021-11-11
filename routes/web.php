@@ -25,13 +25,12 @@ Route::get('/', function() {
     return view('welcome');
 });
 
-//admin
+//home
 Route::get('/user/home', [HomeController::class, 'index'])->name('user:home');
 Route::get('/admin/home', [HomeController::class, 'admin'])->name('admin:home')->middleware('is.admin');
 
 
 //user profile
-Route::get('/user/home/{user}', [UserController::class, 'index'])->name('user:index');
 Route::get('/user/profile/{user}', [UserController::class, 'show'])->name('user:show');
 Route::get('/user/profile/edit/{user}', [UserController::class, 'edit'])->name('user:edit');
 Route::post('/user/profile/update/{user}', [UserController::class, 'update'])->name('user:update');
