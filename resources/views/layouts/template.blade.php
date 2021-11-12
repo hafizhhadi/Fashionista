@@ -118,7 +118,7 @@
 									<span class="badge light text-white bg-primary rounded-circle">15</span>
                                 </a>
 								<div class="dropdown-menu dropdown-menu-end">
-									<div id="DZ_W_TimeLine02" class="widget-timeline dlab-scroll style-1 ps ps--active-y p-3 height100">
+									<div id="DZ_W_TimeLine02" class="widget-timeline dlab-scroll style-1 ps ps--active-y p-3 height300">
                                     <ul class="timeline">
                                         <li>
                                             <div class="timeline-badge primary"></div>
@@ -126,7 +126,21 @@
                                                 <span>10 minutes ago</span>
                                                 <h6 class="mb-0">Youtube, a video-sharing website, goes live <strong class="text-primary">$500</strong>.</h6>
                                             </a>
-                                        </li>          
+                                        </li>
+                                        <li>
+                                            <div class="timeline-badge primary"></div>
+                                            <a class="timeline-panel text-muted" href="javascript:void(0);">
+                                                <span>10 minutes ago</span>
+                                                <h6 class="mb-0">Youtube, a video-sharing website, goes live <strong class="text-primary">$500</strong>.</h6>
+                                            </a>
+                                        </li>    
+                                        <li>
+                                            <div class="timeline-badge primary"></div>
+                                            <a class="timeline-panel text-muted" href="{{ route('order:index') }}">
+                                                <span>10 minutes ago</span>
+                                                <button type="button" class="btn btn-info">Cart</button>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
 								</div>
@@ -170,7 +184,6 @@
 							<span class="nav-text">Dashboard</span>
 						</a>
                         <ul aria-expanded="false">
-							<li><a href="index.html">Dashboard Light</a></li>
 							<li><a href="my-profile.html">Profile</a></li>
 							<li><a href="statistics-page.html">Statistics</a></li>
 							<li><a href="compaines.html">Companies</a></li>	
