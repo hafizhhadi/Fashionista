@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\UserController;
-use App\Http\Controllers\User\OrderController;
+use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 
 /*
@@ -45,5 +45,9 @@ Route::get('/product/delete/{product}', [ProductController::class, 'destroy'])->
 
 //order
 Route::get('/order', [OrderController::class, 'index'])->name('order:index');
+Route::get('/order/add-to-cart/{id}', [OrderController::class, 'addToCart'])->name('add:to:cart');
+Route::get('/order/remove-from-cart', [OrderController::class, 'remove'])->name('remove.from.cart');
+
+
 
 
