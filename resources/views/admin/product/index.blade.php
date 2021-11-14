@@ -27,9 +27,12 @@
             @endif
             <div class="card-body">
                 <div class="table-responsive">   
-                    <a href="{{ route('product:create') }}" type="button" class="btn btn-rounded btn-outline-info">
-                        <span class="btn-icon-start text-info"><i class="fa fa-plus color-info"></i></span>Add Product
+                    @if (auth()->user()->is_admin == 1)
+                    <a href="{{ route('product:create') }}" type="button" class="btn btn-rounded btn-outline-info">Add product
+                        <span class="btn-icon-start text-info"><i class="fa fa-plus color-info"></i></span>
                     </a>
+                    @else
+                    @endif
                     <table class="table table-responsive-md">
                         <thead>
                             <tr>
@@ -60,6 +63,7 @@
                                 <td>{{ $product->price}}</td>
                                 <td>{{ $product->description }}</td>
                                 <td>
+                                    @if (auth()->user()->is_admin == 1)
                                     <div class="dropdown">
                                         <button type="button" class="btn btn-success light sharp" data-bs-toggle="dropdown">
                                             <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
@@ -69,6 +73,9 @@
                                             <a onclick="return confirm('Are you sure to delete this component?')" class="dropdown-item" href="{{ route('product:destroy', $product) }}">Delete</a>
                                         </div>
                                     </div>
+                                    @else
+                                    <a href="{{ route('add:to:cart',$product->id) }}" type="button" class="btn light btn-light btn-xxs">Add to cart</a>
+                                    @endif
                                 </td>       
                             </tr>
                             @endforeach
