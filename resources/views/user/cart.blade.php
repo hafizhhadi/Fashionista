@@ -29,10 +29,10 @@
                                 </li>
                                 @endforeach
                             @endif
+                            
                             {{-- <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
-                                    <h6 class="my-0"></h6>
-                                    <a href="#" type="button" class="btn btn-primary btn-xs">Checkout</a>
+                                    <h6 class="my-0"><strong>Total RM {{ $total }}</strong></h6>
                                 </div>
                             </li> --}}
                         </ul>
@@ -40,20 +40,14 @@
                     {{-- billing address section --}}
                     <div class="col-lg-8 order-lg-1">
                         <h4 class="mb-3">Billing address</h4>
-                        <form class="needs-validation" novalidate="">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="firstName" class="form-label">First name</label>
+                        <form method="POST" action="{{ route('payment:store') }}">
+                            @csrf
+                            {{-- <div class="row">
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label">Name</label>
                                     <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
                                     <div class="invalid-feedback">
                                         Valid first name is required.
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="lastName"  class="form-label">Last name</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
-                                    <div class="invalid-feedback">
-                                        Valid last name is required.
                                     </div>
                                 </div>
                             </div>
@@ -84,43 +78,8 @@
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
-                            </div>
+                            </div>  
 
-                            <div class="mb-3">
-                                <label for="address2"  class="form-label">Address 2 <span
-                                        class="text-muted">(Optional)</span></label>
-                                <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-5 mb-3">
-                                    <label class="form-label">Country</label>
-                                    <select class="default-select form-control wide w-100">
-                                        <option selected >Choose...</option>
-                                        <option value="1">United States</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please select a valid country.
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label  class="form-label">State</label>
-                                    <select class="default-select form-control wide w-100">
-                                        <option selected>Choose...</option>
-                                        <option>California</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please provide a valid state.
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <label for="zip"  class="form-label">Zip</label>
-                                    <input type="text" class="form-control" id="zip" placeholder="" required="">
-                                    <div class="invalid-feedback">
-                                        Zip code required.
-                                    </div>
-                                </div>
-                            </div>
                             <hr class="mb-4">
                             <div class="form-check custom-checkbox mb-2">
                                 <input type="checkbox" class="form-check-input" id="same-address">
@@ -187,9 +146,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr class="mb-4">
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to
-                                checkout</button>
+                            <hr class="mb-4"> --}}
+                            <h2 class="mb-4" name="total_price" id="total_price" value="{{ $total }}"><strong>Total RM {{ $total }}</strong></h2>
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
                         </form>
                     </div>
                 </div>
@@ -202,7 +161,25 @@
 
 @section('scripts')
 <script type="text/javascript">
+
+   $(".update-cart").change(function (e) {
+        e.preventDefault();
   
+        var ele = $(this);
+  
+        $.ajax({
+            url: '{{ route('update.cart') }}',
+            method: "patch",
+            data: {
+                _token: '{{ csrf_token() }}', 
+                id: ele.parents("tr").attr("data-id"), 
+                quantity: ele.parents("tr").find(".quantity").val()
+            },
+            success: function (response) {
+               window.location.reload();
+            }
+        });
+    });
   
     $(".remove-from-cart").click(function (e) {
         e.preventDefault();
