@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Product;
 
 class Order extends Model
 {
@@ -14,4 +15,11 @@ class Order extends Model
         'payment_id',
         'total_price',
     ];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class,'product_id');
+    }
+
 }
+
