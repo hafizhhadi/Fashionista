@@ -76,7 +76,7 @@ class UserController extends Controller
         $user = auth()->user(); 
         $user->update([
             'name'=>$request->name,
-            'password'=>Hash::make($request->password),
+            // 'password'=>Hash::make($request->password),
             'email'=>$request->email,
         ]);
 
