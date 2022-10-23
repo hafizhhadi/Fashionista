@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Payment\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,8 +47,10 @@ Route::get('/product/delete/{product}', [ProductController::class, 'destroy'])->
 //order
 Route::get('/order', [OrderController::class, 'index'])->name('order:index');
 Route::get('/order/add-to-cart/{id}', [OrderController::class, 'addToCart'])->name('add:to:cart');
+Route::patch('update-cart', [OrderController::class, 'update'])->name('update.cart');
 Route::get('/order/remove-from-cart', [OrderController::class, 'remove'])->name('remove.from.cart');
 
-
-
+//checkout
+Route::post('/payment/success/', [PaymentController::class, 'store'])->name('payment:store');
+Route::get('/payment/create', [PaymentController::class, 'create'])->name('payment:create');
 
