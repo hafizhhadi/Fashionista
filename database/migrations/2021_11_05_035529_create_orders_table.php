@@ -17,8 +17,8 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('product_id')->nullable();
             $table->unsignedInteger('payment_id')->nullable();
+            $table->float('total_price',8,2);
             $table->timestamps();
-
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('payment_id')->references('id')->on('payments')->onDelete('cascade');
         });
