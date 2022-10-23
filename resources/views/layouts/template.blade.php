@@ -118,7 +118,7 @@
                                      @php $total = 0 @endphp
                                         @php $quantity = 0 @endphp
                                         @foreach((array) session('cart') as $id => $details)
-                                            @php $total += $details['price'] @endphp
+                                            @php $total += $details['price'] * $details['quantity'] @endphp
                                             @php $quantity += 1 @endphp
                                      @endforeach
 									<span class="badge light text-white bg-primary rounded-circle">{{ $quantity }}</span>
@@ -211,6 +211,14 @@
                     </a>
                     <ul aria-expanded="false">
                         <li><a href="{{ route('product:index') }}">Product List</a></li>
+                    </ul>
+                    </li>
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                        <i class="flaticon-381-clock-1"></i>
+                        <span class="nav-text">History</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="#">Purchase History</a></li>
                     </ul>
                     </li>
                 </ul>
