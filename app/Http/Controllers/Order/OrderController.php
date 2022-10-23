@@ -35,13 +35,13 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function addToCart($id)
+    public function addToCart($id) // model binding (Product $product)
     {
         $product = Product::findOrFail($id);
           
         $cart = session()->get('cart', []);
   
-        if(isset($cart[$id])) {
+        if(isset($cart[$id])) { //object
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
@@ -85,9 +85,14 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        if($request->id && $request->quantity){
+            $cart = session()->get('cart');
+            $cart[$request->id]["quantity"] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart updated successfully');
+        }
     }
 
     /**
@@ -108,3 +113,5 @@ class OrderController extends Controller
         }
     }
 }
+
+//buat sucess payment + bill
